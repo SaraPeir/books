@@ -28,7 +28,8 @@ class SinglePage extends Component {
           } else {
           var mapped = spArray[0].filter(book => book.title.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
           book.author.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
-          book.type.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ) 
+          book.type.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ||
+          book.type2.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ) 
           // sería: filtrame todos los casos donde en los x = (title || author || type)  no me resulta qye el metodo search, applicado a book.x y con argumento la string contenida en filterText me dea resultado true (!== 1)
             .map((book, index) => {
               return (
