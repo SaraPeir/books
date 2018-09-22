@@ -18,7 +18,7 @@ class SinglePage extends Component {
         if (this.props.filterText === null) {
           let mapped = this.props.spArray[0].map((card, index) => {
             return (
-              <div key={index}>
+              <div key={index} className={'col-xs-12 col-sm-6 col-md-4 m-5'}>
               <BookCard title={card.title} author={card.author} type={card.type} url={card.urlImg} openModal={this.openModal} introductionText={card.introductionText} content={card.content} pageNumber={card.pageNumber} tag={card.tag} type2={card.type2} />
               </div>);
             });
@@ -30,7 +30,7 @@ class SinglePage extends Component {
           // sería: filtrame todos los casos donde en los x = (title || author || type)  no me resulta qye el metodo search, applicado a book.x y con argumento la string contenida en filterText me dea resultado true (!== 1)
             .map((book, index) => {
               return (
-                <div key={index}>
+                <div key={index} className={'col-xs-12 col-sm-6 col-lg-4 mt-3 mb-3 mt-sm-5 mb-sm-5'}>
                   <BookCard title={book.title} author={book.author} type={book.type} url={book.urlImg} introductionText={book.introductionText} content={book.content} pageNumber={book.pageNumber} tag={book.tag} type2={book.type2} />
                 </div>          
               )
@@ -54,8 +54,11 @@ class SinglePage extends Component {
         <div className="search-box">
           <input className="input-style" placeholder="buscar por título, autor o temática" type="text" onChange={this.props.onChangeText} value={this.props.filterText} />
         </div>
-        <div className="books-box">
-          {this.renderCards()}
+        <div className="container">
+        <div className="row">
+        {this.renderCards()}
+        </div>
+          
         </div>
       </div>
     );

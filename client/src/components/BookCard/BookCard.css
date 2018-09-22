@@ -1,6 +1,5 @@
 .card-box {
-    width: 300px;
-    border: 2px solid red;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     text-align: center;
