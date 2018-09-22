@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Customers from './components/customers';
-import Ciao from './components/ciao';
 import SinglePage from './components/SinglePage/SinglePage';
 import todosObject from './todos.json';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
