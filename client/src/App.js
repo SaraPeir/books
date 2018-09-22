@@ -57,12 +57,12 @@ class App extends Component {
     const noFiccionBooksText = 'Ensayos, biografías, libros de historia, empresa, bienestar... Descubre cuáles son los bestsellers de los libros de no ficción.';
     return (
       <div className="App">
-      <button>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
-      <button> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
-      <Switch>
-      <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} />}/>
-      <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} />}/>
-      </Switch>
+        <button>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
+        <button> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
+        <Switch>
+          <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} />}/>
+          <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} />}/>
+        </Switch>
       </div>
     );
   }

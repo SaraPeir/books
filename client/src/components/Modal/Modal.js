@@ -24,12 +24,20 @@ class ModalBS extends Component {
       <div>
       <Button onClick={this.toggle}>Más detalles</Button>
       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-        <ModalHeader toggle={this.toggle}>{this.props.title}</ModalHeader>
-        <ModalBody>
-          <p>{this.props.title}</p>
+          <ModalHeader toggle={this.toggle}><span className={'special-typo2'}>{this.props.author},</span> <span className={'special-typo'}>{this.props.title}</span></ModalHeader>
+          <ModalBody className={'container centering'}>
+          <div className={'row'}>
+            <div className={'col-12'}>
+              <img src={this.props.url} alt={`${this.props.title} image`} />
+            </div>
+            <div className={'col-12  p-5'}>
+              <p className={'special-typo'}>{this.props.introductionText}</p>
+              <p>{this.props.content}</p>
+            </div>
+          </div>
         </ModalBody>
+        <ModalFooter toggle={this.toggle}>{this.props.type2} - {this.props.pageNumber} páginas</ModalFooter>
       </Modal>
-      
     </div>  
     );
   }

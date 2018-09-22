@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SinglePage.css';
 import BookCard from '../BookCard/BookCard';
-import Modal from '../Modal/Modal';
+import ModalBS from '../Modal/Modal';
 import todosObject from '../../todos.json';
 
 class SinglePage extends Component {
@@ -16,22 +16,24 @@ class SinglePage extends Component {
   
     renderCards(){
       const {spArray} = this.props;
-      if(this.props.spArray !== undefined && this.props.spArray.length !== 0 ){
+      if (this.props.spArray !== undefined && this.props.spArray.length !== 0 ) {
         console.log('ficcionBooks in renderCard()', this.props.spArray[0]);
-        if(this.state.filter === '') {
+        if (this.state.filter === '') {
           let mapped = this.props.spArray[0].map((card, index) => {
             return (
               <div key={index}>
-              <BookCard title={card.title} author={card.author} type={card.type} url={card.urlImg} openModal={this.openModal} />
+              <BookCard title={card.title} author={card.author} type={card.type} url={card.urlImg} openModal={this.openModal} introductionText={card.introductionText} content={card.content} pageNumber={card.pageNumber} tag={card.tag} type2={card.type2} />
               </div>);
             });
           } else {
-          var mapped = spArray[0].filter(book => book.title.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1) 
-          // sería: filtrame todos los casos donde en los titulos no me resulta el metodo search, applicado a book.title y con argumento la string contenida en filterText no me da resultado false
+          var mapped = spArray[0].filter(book => book.title.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
+          book.author.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
+          book.type.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ) 
+          // sería: filtrame todos los casos donde en los x = (title || author || type)  no me resulta qye el metodo search, applicado a book.x y con argumento la string contenida en filterText me dea resultado true (!== 1)
             .map((book, index) => {
               return (
                 <div key={index}>
-                  <BookCard title={book.title} author={book.autor} type={book.type} url={book.urlImg} />
+                  <BookCard title={book.title} author={book.author} type={book.type} url={book.urlImg} introductionText={book.introductionText} content={book.content} pageNumber={book.pageNumber} tag={book.tag} type2={book.type2} />
                 </div>          
               )
             }
