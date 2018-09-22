@@ -8,17 +8,14 @@ class SinglePage extends Component {
 
   constructor() {
     super();
-    this.state = {
-      filterText: ''
-    };
-    this.handleChangeText = this.handleChangeText.bind(this);
+
   }
   
     renderCards(){
       const {spArray} = this.props;
       if (this.props.spArray !== undefined && this.props.spArray.length !== 0 ) {
         console.log('ficcionBooks in renderCard()', this.props.spArray[0]);
-        if (this.state.filter === '') {
+        if (this.props.filterText === null) {
           let mapped = this.props.spArray[0].map((card, index) => {
             return (
               <div key={index}>
@@ -26,10 +23,10 @@ class SinglePage extends Component {
               </div>);
             });
           } else {
-          var mapped = spArray[0].filter(book => book.title.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
-          book.author.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 || 
-          book.type.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ||
-          book.type2.toLowerCase().search(this.state.filterText.toLowerCase()) !== -1 ) 
+          var mapped = spArray[0].filter(book => book.title.toLowerCase().search(this.props.filterText.toLowerCase()) !== -1 || 
+          book.author.toLowerCase().search(this.props.filterText.toLowerCase()) !== -1 || 
+          book.type.toLowerCase().search(this.props.filterText.toLowerCase()) !== -1 ||
+          book.type2.toLowerCase().search(this.props.filterText.toLowerCase()) !== -1 ) 
           // sería: filtrame todos los casos donde en los x = (title || author || type)  no me resulta qye el metodo search, applicado a book.x y con argumento la string contenida en filterText me dea resultado true (!== 1)
             .map((book, index) => {
               return (
@@ -49,22 +46,13 @@ class SinglePage extends Component {
         }
     }
 
-handleChangeText(event) {
-    const {spArray} = this.props;
-    const {filterText} = this.state;
-    this.setState({
-      filterText: event.target.value
-    });
-    console.log(filterText);
-}
-
   render() {
     return (
       <div>
         <p id="page-title">{this.props.title}</p>
         <p id="page-text">{this.props.text}</p>
         <div className="search-box">
-          <input className="input-style" placeholder="buscar por título, autor o temática" type="text" onChange={this.handleChangeText} value={this.state.filterText} />
+          <input className="input-style" placeholder="buscar por título, autor o temática" type="text" onChange={this.props.onChangeText} value={this.props.filterText} />
         </div>
         <div className="books-box">
           {this.renderCards()}

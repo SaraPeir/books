@@ -15,6 +15,8 @@ class App extends Component {
       noFiccionBooks: [],
       filterText: ''
     };
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.resetInput = this.resetInput.bind(this);
   }
 
     componentDidMount() {
@@ -34,10 +36,10 @@ class App extends Component {
     booksFiccionArray.push(allBooks[0].ficcion);
     booksNoFiccionArray.push(allBooks[0].noFiccion);
 
-    console.log('booksArray', booksArray);
-    console.log('ficcion books Array', booksFiccionArray);
-    console.log('no ficcion books Array', booksNoFiccionArray);
-    console.log(booksNoFiccionArray[0][0].title);
+    // console.log('booksArray', booksArray);
+    // console.log('ficcion books Array', booksFiccionArray);
+    // console.log('no ficcion books Array', booksNoFiccionArray);
+    // console.log(booksNoFiccionArray[0][0].title);
 
     this.setState({
       book: booksArray,
@@ -49,6 +51,21 @@ class App extends Component {
     console.log('books actuslizado', this.state.books);
   }
 
+  handleChangeText(event) {
+    const {filterText} = this.state;
+    this.setState({
+      filterText: event.target.value
+    });
+    console.log(filterText);
+}
+
+resetInput(event) {
+  const {filterText} = this.state;
+    this.setState({
+      filterText: ''
+    });
+}
+
   render() {
     const ficcionBooksTitle = 'Los libros más vendidos de ficción';
     const ficcionBooksText = 'Descubre cuáles son los libros más vendidos de este año con este ránking de bestsellers. Los libros más leídos de romántica, thriller, juvenil, novelas, libros de no ficción y mucho más lo encontrarás aquí.';
@@ -57,11 +74,11 @@ class App extends Component {
     const noFiccionBooksText = 'Ensayos, biografías, libros de historia, empresa, bienestar... Descubre cuáles son los bestsellers de los libros de no ficción.';
     return (
       <div className="App">
-        <button>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
-        <button> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
+        <button onClick={this.resetInput}>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
+        <button onClick={this.resetInput}> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
         <Switch>
-          <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} />}/>
-          <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} />}/>
+          <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>
+          <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>
         </Switch>
       </div>
     );
@@ -69,4 +86,3 @@ class App extends Component {
 }
 
 export default App;
-
