@@ -31,4 +31,19 @@
     margin-right: auto;
     font-size: 24px;
     margin: 2%;
+    margin-bottom: 20%;
+    margin-top: 10%;
+}
+
+.searchbox-container {
+    background-image: url('../../Images/noFiccionImage.jpeg');
+    opacity: 0.7;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 50px 100px 100px inset #fff;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    color: black;
 }

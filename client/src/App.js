@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SinglePage from './components/SinglePage/SinglePage';
+import Favourites from './components/Favourites/Favourites';
 import todosObject from './todos.json';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
@@ -76,9 +77,11 @@ resetInput(event) {
       <div className="App">
         <button onClick={this.resetInput}>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
         <button onClick={this.resetInput}> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
+        <button onClick={this.resetInput}> <Link to='/favourites' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros favoritos</Link></button>
         <Switch>
           <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>
           <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>
+          <Route exact path='/favourites' render={(props) => <Favourites {...props} />}/>
         </Switch>
       </div>
     );

@@ -49,16 +49,18 @@ class SinglePage extends Component {
   render() {
     return (
       <div>
+      <div className="searchbox-container">
         <p id="page-title">{this.props.title}</p>
-        <p id="page-text">{this.props.text}</p>
+        
         <div className="search-box">
           <input className="input-style" placeholder="buscar por título, autor o temática" type="text" onChange={this.props.onChangeText} value={this.props.filterText} />
+        </div>
+        <p id="page-text">{this.props.text}</p>
         </div>
         <div className="container">
         <div className="row">
         {this.renderCards()}
         </div>
-          
         </div>
       </div>
     );
