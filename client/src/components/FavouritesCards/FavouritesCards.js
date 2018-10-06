@@ -6,8 +6,6 @@ class FavouritesCards extends Component {
         super(props);
       }
       
-// https://github.com/haltu/muuri#table-of-contents
-
   render() {
     return (
       <div>
@@ -16,7 +14,7 @@ class FavouritesCards extends Component {
           <p id="strong">{this.props.title}</p>
           <p>{this.props.author}</p>
           <p>{this.props.type}</p>
-          <button type="button" className="close">&times;</button>
+          <button type="button" className="close" onClick={this.props.onClose}>&times;</button>
         </div>
       </div>
     );

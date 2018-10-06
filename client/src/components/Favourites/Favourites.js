@@ -15,6 +15,7 @@ class Favourites extends Component {
         this.changeAuthor = this.changeAuthor.bind(this);
         this.updateData = this.updateData.bind(this);
         // this.resetInput = this.resetInput.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
       }
 
       changeTitle(event) {
@@ -48,32 +49,40 @@ class Favourites extends Component {
         const newTitle = title;
         const newAuthor = author;
         
-            if(newTitle !== '' && newAuthor !== '') {
-                this.setState({
-                    favourites: favourites.concat({newTitle, newAuthor})
-                });
-            }
-            console.log('favourites', this.state.favourites);
-            this.resetTitle();
-            this.resetAuthor();
+        if(newTitle !== '' && newAuthor !== '') {
+            this.setState({
+                favourites: favourites.concat({newTitle, newAuthor})
+            });
         }
+        console.log('favourites', this.state.favourites);
+        this.resetTitle();
+        this.resetAuthor();
+    }
 
-        renderFavourites() {
-            if (this.state.favourites.length > 0) {
-                var cards = this.state.favourites.map((card, index) => {
-                    return (
-                    <FavouritesCard key={index} index={parseInt(index)} title={card.newTitle} author={card.author} />
-                    );
-                });
+    deleteCard(title) {
+    const filteredArray = this.state.favourites.filter(favourite => favourite.newTitle !== title)
+    this.setState({favourites: filteredArray});
+    console.log('filteredArray', this.state.favourites)
+    }
+
+    renderFavourites() {
+        if (this.state.favourites.length > 0) {
+            var cards = this.state.favourites.map((card, index) => {
                 return (
-                    cards 
+                <div>
+                    <FavouritesCard key={index} index={parseInt(index)} title={card.newTitle} author={card.author} onClose={() => this.deleteCard(card.newTitle)} />
+                </div>
                 );
-            }
+            });
+            return (
+                cards 
+            );
         }
-        
+    }
         
 
 render() {
+    
 return (
     <div className={'form-container'}>
     <input className="input-favourites-style" placeholder="título" type="text" onChange={this.changeTitle} value={this.state.title} />
@@ -86,6 +95,8 @@ return (
 }
 
 export default Favourites;
+
+// =============================
 
 // import ContentEditable from 'react-contenteditable';
 // import React, { Component } from 'react';
