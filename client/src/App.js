@@ -5,9 +5,7 @@ import Favourites from './components/Favourites/Favourites';
 import todosObject from './todos.json';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
-
 class App extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -20,7 +18,7 @@ class App extends Component {
     this.resetInput = this.resetInput.bind(this);
   }
 
-    componentDidMount() {
+  componentDidMount() {
       this.createArrays();
   }
 
@@ -30,17 +28,12 @@ class App extends Component {
     const booksFiccionArray = [];
     const booksNoFiccionArray = [];
 
-    const allBooks = array.concat(todosObject);  //conca<t porque todosObject es un pbjecto, no un array
+    const allBooks = array.concat(todosObject);  //concat porque todosObject es un pbjecto, no un array
     const {books, ficcionBooks, noFiccionBooks} = this.state;
     
     booksArray.push(allBooks[0]);
     booksFiccionArray.push(allBooks[0].ficcion);
     booksNoFiccionArray.push(allBooks[0].noFiccion);
-
-    // console.log('booksArray', booksArray);
-    // console.log('ficcion books Array', booksFiccionArray);
-    // console.log('no ficcion books Array', booksNoFiccionArray);
-    // console.log(booksNoFiccionArray[0][0].title);
 
     this.setState({
       book: booksArray,
@@ -58,14 +51,14 @@ class App extends Component {
       filterText: event.target.value
     });
     console.log(filterText);
-}
+  }
 
-resetInput(event) {
-  const {filterText} = this.state;
-    this.setState({
-      filterText: ''
-    });
-}
+  resetInput(event) {
+    const {filterText} = this.state;
+      this.setState({
+        filterText: ''
+      });
+  }
 
   render() {
     const ficcionBooksTitle = 'Los libros más vendidos de ficción';
@@ -75,9 +68,9 @@ resetInput(event) {
     const noFiccionBooksText = 'Ensayos, biografías, libros de historia, empresa, bienestar... Descubre cuáles son los bestsellers de los libros de no ficción.';
     return (
       <div className="App">
-        <button onClick={this.resetInput}>  <Link to='/' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}} > Libros de ficción </Link></button>
-        <button onClick={this.resetInput}> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros de no ficción</Link></button>
-        <button onClick={this.resetInput}> <Link to='/favourites' style={{ textDecoration: 'none', color: 'white', textAlign: 'center'}}>Libros favoritos</Link></button>
+        <button onClick={this.resetInput} className={'button-style'}>  <Link to='/' style={{ textDecoration: 'none', color: 'black', textAlign: 'center'}} > Libros de ficción </Link></button>
+        <button onClick={this.resetInput} className={'button-style'}> <Link to='/noFiccion' style={{ textDecoration: 'none', color: 'black', textAlign: 'center'}}>Libros de no ficción</Link></button>
+        <button onClick={this.resetInput} className={'button-style'}> <Link to='/favourites' style={{ textDecoration: 'none', color: 'black', textAlign: 'center'}}>Libros favoritos</Link></button>
         <Switch>
           <Route exact path='/' render={(props) => <SinglePage {...props} spArray={this.state.ficcionBooks} title={ficcionBooksTitle} text={ficcionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>
           <Route exact path='/noFiccion' render={(props) => <SinglePage {...props} spArray={this.state.noFiccionBooks} title={noFiccionBooksTitle} text={noFiccionBooksText} filterText={this.state.filterText} onChangeText={this.handleChangeText} />}/>

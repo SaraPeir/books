@@ -14,26 +14,61 @@
  }
 
  #page-title {
-     font-size: 32px;
+     font-size: 20px;
      font-weight: bold;
+     margin-top: 20px;
  }
 
  #page-text {
-    font-size: 20px;
+    font-size: 16px;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .input-style {
-    width: 30%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    font-size: 24px;
+    font-size: 16px;
     margin: 2%;
-    margin-bottom: 20%;
-    margin-top: 10%;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
+
+@media screen and (min-width: 768px) {
+    #page-text {
+        font-size: 20px;
+    }
+
+    #page-title {
+        font-size: 30px;
+        margin-top: 30px;
+    }
+    .input-style {
+        font-size: 20px;
+        width: 70%;
+        margin-bottom: 15%;
+        margin-top: 15%;
+    }
+    }
+
+@media screen and (min-width: 1024px) {
+.input-style {
+    margin-bottom: 10%;
+}
+}
+
+@media screen and (min-width: 1800px) {
+    .input-style {
+        margin-bottom: 5%;
+        font-size: 30px;
+    }
+    #page-text {
+        font-size: 30px;
+    }
+        
+    }
 
 .searchbox-container {
     background-image: url('../../Images/noFiccionImage.jpeg');
