@@ -69,13 +69,17 @@ class Favourites extends Component {
         if (this.state.favourites.length > 0) {
             var cards = this.state.favourites.map((card, index) => {
                 return (
-                <div>
-                    <FavouritesCard key={index} index={parseInt(index)} title={card.newTitle} author={card.author} onClose={() => this.deleteCard(card.newTitle)} />
+                        <div key={index} className="col-xs-12 col-sm-6 col-lg-4 mt-3 mb-3 mt-sm-5 mb-sm-5">
+                            <FavouritesCard title={card.newTitle} author={card.author} onClose={() => this.deleteCard(card.newTitle)} />
                 </div>
                 );
             });
             return (
-                cards 
+                <div className="container">
+                    <div className="row">
+                {cards} 
+                </div>
+                </div>
             );
         }
     }
@@ -84,11 +88,14 @@ class Favourites extends Component {
 render() {
     
 return (
+    <div>
     <div className={'form-container'}>
     <input className="input-favourites-style" placeholder="título" type="text" onChange={this.changeTitle} value={this.state.title} />
     <input className="input-favourites-style" placeholder="autor" type="text" onChange={this.changeAuthor} value={this.state.author} />
     <button onClick={this.updateData}>Ya</button>
+    </div>
     {this.renderFavourites()}
+    
     </div>
 );
 }

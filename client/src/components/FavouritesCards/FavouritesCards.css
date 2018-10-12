@@ -1,0 +1,29 @@
+.card-box {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+}
+
+.card-box img {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 10px 10px 10px lightgrey;
+}
+
+#strong {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#tag {
+    text-transform: uppercase;
+    color: white;
+    background: pink;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}

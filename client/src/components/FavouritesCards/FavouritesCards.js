@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './FavouritesCards.css';
 
 class FavouritesCards extends Component {
     constructor(props) {

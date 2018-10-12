@@ -3,3 +3,9 @@
     margin: 2% auto;
     display: block;
 }
+
+.form-container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: red;
+}
